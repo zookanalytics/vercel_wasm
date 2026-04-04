@@ -1,0 +1,22 @@
+{
+  "name": "vercel-wasm-repro",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@automerge/automerge": "^3.2.5",
+    "@automerge/automerge-repo": "^2.5.5",
+    "next": "16.2.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "25.5.2",
+    "@types/react": "19.2.14",
+    "typescript": "6.0.2"
+  }
+}
