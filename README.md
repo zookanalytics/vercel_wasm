@@ -65,8 +65,3 @@ async loadWebAssembly(e, t, r, n, o) {
   // ...
 }
 ```
-
-## Workaround
-
-Use `@automerge/automerge-repo/slim` with manual WASM initialization
-(base64 or `public/` file) to bypass Turbopack's WASM chunk loading entirely.
