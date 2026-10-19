@@ -4,6 +4,13 @@ Minimal reproduction for a Turbopack bug in Next.js 16.2+ where WASM files
 get a 404 on Vercel deployments due to double-encoding of the deployment ID
 query parameter.
 
+> **Branch `test/pr-92369-fix`:** `pnpm build` runs
+> `scripts/apply-pr-92369.mjs` after `next build`. The script applies the
+> `getChunkRelativeUrl` fix from
+> [vercel/next.js#92369](https://github.com/vercel/next.js/pull/92369) to the
+> emitted Turbopack runtime chunk. Deploy this branch to check the fix on
+> Vercel: the page should show "WASM loaded successfully".
+
 ## The Bug
 
 When Turbopack processes `import * as wasm from "./foo.wasm"`, the WASM chunk
