@@ -65,15 +65,19 @@ export default function Home() {
           deployment ID suffix.
         </p>
         <p>
-          <strong>Fails on Vercel</strong> because Turbopack&apos;s{' '}
-          <code>.q()</code> function appends <code>?dpl=xxx</code> to the WASM
-          path, then <code>N()</code> encodeURIComponent&apos;s the path segment
-          (turning <code>?</code> into <code>%3F</code>) and appends{' '}
-          <code>?dpl=xxx</code> again. The double-encoded URL 404s.
+          <strong>Fails when assets carry a <code>?dpl=</code> suffix</strong>{' '}
+          (Vercel with Next.js 16.2.x, or <code>NEXT_DEPLOYMENT_ID</code> when
+          self-hosting) because Turbopack&apos;s <code>.q()</code> function
+          appends <code>?dpl=xxx</code> to the WASM path, then the URL builder
+          encodeURIComponent&apos;s the path segment (turning <code>?</code>{' '}
+          into <code>%3F</code>) and appends <code>?dpl=xxx</code> again. The
+          double-encoded URL 404s.
         </p>
         <p>
-          <strong>Works with Next.js 16.1.7</strong> because it used{' '}
-          <code>.v()</code> which stored paths without the suffix.
+          <strong>Works on Vercel with Next.js 16.3+</strong> because hashed
+          assets are served from <code>/_next/static/immutable/</code> without{' '}
+          <code>?dpl=</code>, and <strong>with Next.js 16.1.7</strong> because
+          it used <code>.v()</code> which stored paths without the suffix.
         </p>
       </details>
     </main>
